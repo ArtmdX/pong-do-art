@@ -1,4 +1,4 @@
-const canvas = document.getElementById("pongCanvas");
+      const canvas = document.getElementById("pongCanvas");
       const ctx = canvas.getContext("2d");
       const mensagem = document.getElementById("mensagem");
       const botaoReiniciar = document.getElementById("reiniciar");
@@ -6,7 +6,7 @@ const canvas = document.getElementById("pongCanvas");
       // Variáveis da bola
       let bolaX = canvas.width / 2;
       let bolaY = canvas.height / 2;
-      let bolaRadius = 10;
+      let bolaRaio = 10;
       let dx = 4;
       let dy = 4;
       let incrementoVelocidade = 0.1; // Aumenta a velocidade a cada colisão com as barras
@@ -14,7 +14,7 @@ const canvas = document.getElementById("pongCanvas");
       // Variáveis das barras
       const barraAltura = 100;
       const barraLargura = 13;
-      const distanciaDasParedes = 20; // Espaço entre as barras e as paredes
+      const distanciaDasParedes = 10; // Espaço entre as barras e as paredes
       let barraEsquerdaY = (canvas.height - barraAltura) / 2;
       let barraDireitaY = (canvas.height - barraAltura) / 2;
       const velocidadeBarra = 6;
@@ -40,7 +40,8 @@ const canvas = document.getElementById("pongCanvas");
         barraEsquerdaY = (canvas.height - barraAltura) / 2;
         barraDireitaY = (canvas.height - barraAltura) / 2;
         tempoRestante = 60;
-
+        placarDireita = 0
+        placarEsquerda = 0
         mensagem.style.display = "none";
         botaoReiniciar.style.display = "none";
 
@@ -51,7 +52,7 @@ const canvas = document.getElementById("pongCanvas");
       // Desenha a bola
       function desenhaBola() {
         ctx.beginPath();
-        ctx.arc(bolaX, bolaY, bolaRadius, 0, Math.PI * 2);
+        ctx.arc(bolaX, bolaY, bolaRaio, 0, Math.PI * 2);
         ctx.fillStyle = "white";
         ctx.fill();
         ctx.closePath();
@@ -110,7 +111,7 @@ const canvas = document.getElementById("pongCanvas");
         bolaX += dx;
         bolaY += dy;
 
-        if (bolaY + dy < bolaRadius || bolaY + dy > canvas.height - bolaRadius) {
+        if (bolaY + dy < bolaRaio || bolaY + dy > canvas.height - bolaRaio) {
           dy = -dy;
         }
 
